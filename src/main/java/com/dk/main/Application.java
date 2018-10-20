@@ -1,6 +1,7 @@
 package com.dk.main;
 
 
+import com.dk.beans.MyMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,10 +22,19 @@ public class Application {
     @Autowired
     String message;
 
+    @Autowired
+    MyMessage myMessage;
+
     @RequestMapping("/say")
     public String sayHello(){
 
         return message;
+    }
+
+    @RequestMapping("/lucky")
+    public String luckyNumber(){
+
+        return "Your lucky number :"+myMessage.getMessageValue();
     }
 
     public static void main(String... args){
